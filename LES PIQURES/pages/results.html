@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>LES PIQURES-MORSURES</title>
+
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=Windows-1252">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Author" content="Made with QuizFaber 4.1.9">
+    <meta name="generator" content="QuizFaber 4.1.9">
+    <meta name="keywords" content="quiz">
+    <meta name="description" content="QCM choix multiples">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script src="../scripts/error.js"></script>
+    <script src="../scripts/definitions.js"></script>
+    <script src="../scripts/security.js"></script>
+    <script src="../scripts/cookie.js"></script>
+    <script src="../scripts/storage.js"></script>
+    <script src="../scripts/time.js"></script>
+    <script src="../scripts/valuation.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/utility.js"></script>
+    <script src="../scripts/engine.js"></script>
+    <script src="../scripts/view.js"></script>
+    <script src="../scripts/results.js"></script>
+
+    <script src="../scripts/page_results.js"></script>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/layout.css">
+
+</head>
+<body>
+    <div id="idReport" class="container">
+
+        <div class="jumbotron qf-jumbotron-class" id="idQuizHeader">
+
+            <div class="row">
+                <div class="col-md-3" id="idQuizHeaderLogo">
+                    <div id="idQuizHeaderLogoImg"></div>
+                </div>
+                <div class="col-md-9" id="idQuizHeaderText">
+                    <h1 id="idQuizTitle"></h1>
+                    <p class="lead">
+                        <span id="idQuizDescription"></span>
+                        <p id="idQuizProfile" style="display:none">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#idQuizProfileInfo">Plus d&apos;infos</button>
+                            <div id="idQuizProfileInfo" class="collapse">
+                                <ul class="list-group">
+                                    <li class="list-group-item"><strong>Auteur</strong><span class="pull-right" id="idAuthor"></span></li>
+                                    <li class="list-group-item"><strong>Argument</strong><span class="pull-right" id="idArgument"></span></li>
+                                    <li class="list-group-item"><strong>Entreprise</strong><span class="pull-right" id="idCompany"></span></li>
+                                    <li class="list-group-item"><strong>Date</strong><span class="pull-right" id="idDate"></span></li>
+                                </ul>
+                            </div>
+                        </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="divErrorGlobal" class="alert alert-danger alert-dismissible fade in" style="display:none">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Erreur</strong> <span id="idErrorMsgGlobal"></span>
+        </div>
+        <div id="divWarningGlobal" class="alert alert-warning alert-dismissible fade in" style="display:none">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Attention !</strong> <span id="idWarningMsgGlobal" />
+        </div>
+
+        <div class="panel panel-primary qf-panel-result-class" id="resultPanelId">
+            <div class="panel-heading qf-panel-result-heading-class"><b>Résultat du test</b></div>
+
+            <div class="panel-body qf-panel-result-body-class">
+
+                <div class="progress" id="idProgressSavingResults">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" id="idProgressSavingResultsMessage" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        Enregistrer le questionnaire
+                    </div>
+                </div>
+
+                <div id="divSuccessR" class="alert alert-success alert-dismissible fade in" style="display:none">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <span id="idSuccessMsgR"></span>
+                </div>
+
+                <div id="divErrorR" class="alert alert-danger alert-dismissible fade in" style="display:none">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Erreur</strong> <span id="idErrorMsgR"></span>
+                </div>
+
+                <div id="divWarningR" class="alert alert-warning alert-dismissible fade in" style="display:none">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Attention !</strong> <span id="idWarningMsgR" />
+                </div>
+
+                <ul class="list-group" id="idReportSummary">
+                    <li class="list-group-item qf-result-summary-item-class">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6" id="idReportNameOrEmail">Nom du candidat</div>
+                            <div id="idUserName" class="col-sm-6 col-xs-6 text-right"></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item qf-result-summary-item-class" id="idReportNumOfQuestions">Nombre de questions <span id="idNumOfQuestions" class="badge"></span></li>
+                    <li class="list-group-item revision-class qf-result-summary-item-class" id="idReportCorrectAnswers">Bonnes réponses <span id="idCorrectAnswers" class="badge"></span></li>
+                    <li class="list-group-item revision-class qf-result-summary-item-class" id="idReportWrongAnswers">Mauvaises réponses <span id="idWrongAnswers" class="badge"></span></li>
+                    <li class="list-group-item revision-class qf-result-summary-item-class" id="idReportNotAnswered">Questions sans réponse <span id="idNotAnswered" class="badge"></span></li>
+                    <li class="list-group-item revision-class qf-result-summary-item-class" id="idReportNotValuatedAnswers">Questions sans réponse <span id="idNotValuatedAnswers" class="badge"></span></li>
+                    <li class="list-group-item qf-result-summary-item-class" id="idReportStartDate">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6">Date</div>
+                            <div id="idStartDate" class="col-sm-6 col-xs-6 text-right"></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item qf-result-summary-item-class" id="idReportTimeElapsed">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6">Temps écoulé</div>
+                            <div id="idTimeElapsed" class="col-sm-6 col-xs-6 text-right"></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item revision-class qf-result-summary-item-class" id="idReportFinalResult">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6">
+                                <span id="idLabelFinalMark" style="display:none">NOTE</span>
+                                <span id="idLabelSeparatorMarkPoints" style="display:none"> | </span>
+                                <span id="idLabelFinalPoints" style="display:none">Score</span>
+                            </div>
+                            <div id="idFinalResult" class="col-sm-6 col-xs-6 text-right"></div>
+                        </div>
+                    </li>
+                    <li class="list-group-item qf-result-summary-item-class" id="idReportNumRetake">
+                        <div class="row">
+                            <div class="col-sm-6 col-xs-6">Nombre de reprises</div>
+                            <div id="idNumRetake" class="col-sm-6 col-xs-6 text-right"></div>
+                        </div>
+                    </li>
+                </ul>
+
+                <p id="idReportFinalMessage" style="display:none" />
+
+                <div id="divReportDetails"></div>
+
+            </div>
+
+            <div class="panel-footer" id="idQuizFooter"><span id="idCopyrightMsg" /></div>
+        </div>
+
+        <div class="text-center" id="idButtonBar">
+            <button type="button" id="idBtnPrint" class="btn btn-primary" onclick="onPrintClick()" style="display:none">IMPRIMER</button>
+            <button type="button" id="idBtnRepeat" class="btn btn-primary" onclick="onRepeatClick()" style="display:none">RECOMMENCER</button>
+            <button type="button" id="idBtnLinkback" class="btn btn-primary" onclick="GoToPage('', true)" style="display:none"></button>
+            <button type="button" id="idBtnExit" class="btn btn-primary" onclick="onExitClick()">ABANDON</button>
+        </div>
+    </div>
+</body>
+</html>
